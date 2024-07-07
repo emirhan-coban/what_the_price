@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "295008001704",
+    "project_id": "whattheprice-195e3",
+    "storage_bucket": "whattheprice-195e3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:295008001704:android:cce15d0c9387d46fa26c9d",
+        "android_client_info": {
+          "package_name": "com.example.what_the_price"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuBmEBevVAiU8VOBlTCuxWJu1OzmP60lM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
