@@ -119,6 +119,14 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+    mail.dispose();
+    password.dispose();
+    repeatpassword.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[200],
@@ -147,6 +155,11 @@ class _RegisterPageState extends State<RegisterPage> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 20),
                     child: TextField(
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                        fontFamily: "SFPro",
+                      ),
                       autocorrect: false,
                       controller: mail,
                       decoration: const InputDecoration(
@@ -172,6 +185,11 @@ class _RegisterPageState extends State<RegisterPage> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 20),
                     child: TextField(
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                        fontFamily: "SFPro",
+                      ),
                       autocorrect: false,
                       obscureText: true,
                       controller: password,
@@ -198,6 +216,11 @@ class _RegisterPageState extends State<RegisterPage> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 20),
                     child: TextField(
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                        fontFamily: "SFPro",
+                      ),
                       autocorrect: false,
                       obscureText: true,
                       controller: repeatpassword,

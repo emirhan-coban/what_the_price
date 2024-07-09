@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:what_the_price/util/drawer.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -15,7 +16,6 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
         backgroundColor: Colors.white,
-        leading: Icon(Icons.menu, color: Colors.black),
         title: const Text(
           'Anasayfa',
           style: TextStyle(
@@ -26,6 +26,7 @@ class _HomePageState extends State<HomePage> {
         ),
         centerTitle: true,
       ),
+      drawer: const MyDrawer(),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

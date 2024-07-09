@@ -19,7 +19,8 @@ class _LoginPageState extends State<LoginPage> {
         password: password.text,
       );
     } catch (e) {
-      if (e.toString().contains("The supplied auth credential is incorrect, malformed or has expired.")) {
+      if (e.toString().contains(
+          "The supplied auth credential is incorrect, malformed or has expired.")) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             duration: const Duration(seconds: 2),
@@ -71,6 +72,13 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+    mail.dispose();
+    password.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[200],
@@ -99,6 +107,11 @@ class _LoginPageState extends State<LoginPage> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 20),
                     child: TextField(
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                        fontFamily: "SFPro",
+                      ),
                       autocorrect: false,
                       controller: mail,
                       decoration: const InputDecoration(
@@ -124,6 +137,11 @@ class _LoginPageState extends State<LoginPage> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 20),
                     child: TextField(
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                        fontFamily: "SFPro",
+                      ),
                       autocorrect: false,
                       obscureText: true,
                       controller: password,
@@ -139,7 +157,30 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
-              const SizedBox(height: 15),
+              const SizedBox(height: 3),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 30),
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, '/forgot_password');
+                      },
+                      child: const Text(
+                        textAlign: TextAlign.start,
+                        'Şifremi Unuttum',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontFamily: "SFPro",
+                          color: Colors.red,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 5),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.red,

@@ -6,6 +6,8 @@ import 'package:what_the_price/firebase_options.dart';
 import 'package:what_the_price/pages/home_page.dart';
 import 'package:what_the_price/pages/login_register.dart';
 import 'package:what_the_price/util/user.dart';
+
+import 'pages/forgot_password.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -26,6 +28,7 @@ class MyApp extends StatelessWidget {
         '/user':(context) => const UserPage(),
         '/login': (context) => const LoginRegister(),
         '/home': (context) => const HomePage(),
+        '/forgot_password': (context) => const ForgotPassword(),
       },
     );
   }
