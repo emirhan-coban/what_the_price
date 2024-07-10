@@ -1,4 +1,5 @@
-import 'package:firebase_auth/firebase_auth.dart';
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:what_the_price/util/drawer.dart';
 
@@ -15,40 +16,37 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: const Text(
-          'Anasayfa',
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 20,
-            fontFamily: "SFPro",
-          ),
+        backgroundColor: Colors.grey[200],
+        elevation: 0,
+        iconTheme: IconThemeData(
+          color: Colors.grey[900],
+          size: 30,
         ),
-        centerTitle: true,
+        actions: [
+          IconButton(
+            icon: const Icon(
+              Icons.favorite,
+            ),
+            onPressed: () {
+              // Handle settings onTap
+            },
+          ),
+        ],
       ),
       drawer: const MyDrawer(),
-      body: Center(
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Hoşgeldin!',
-              textAlign: TextAlign.center,
+              "Aradığınız her\nişletmenin\nfiyatlarına erişin!",
               style: TextStyle(
-                fontFamily: "SFPro",
-                fontSize: 20,
+                fontSize: 36,
                 color: Colors.grey[900],
+                fontFamily: "SFPro",
+                fontWeight: FontWeight.bold,
               ),
-            ),
-            const SizedBox(height: 15),
-            ElevatedButton(
-              onPressed: () {
-                FirebaseAuth.instance.signOut();
-                if (FirebaseAuth.instance.currentUser == null) {
-                  Navigator.pushNamed(context, '/login');
-                }
-              },
-              child: const Text('Çıkış Yap'),
             ),
           ],
         ),

@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -44,7 +46,6 @@ class _LoginPageState extends State<LoginPage> {
           ),
         );
       } else {
-        print(e);
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             duration: const Duration(seconds: 2),
