@@ -1,16 +1,14 @@
 # what_the_price
 
-A new Flutter project.
+A stylish mobile application where you can find the menus and prices of the businesses and cafes you are looking for. Written with Flutter by Emirhan ÇOBAN.
 
-## Getting Started
+## Can I use the UI?
 
-This project is a starting point for a Flutter application.
+Yes! You can use the ui. But you have to configure your firebase api etc. on firebase_options.dart
 
-A few resources to get you started if this is your first Flutter project:
+## Pictures of application
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Screenshot_20240712_160217](https://github.com/user-attachments/assets/05f6aab5-b8e5-4cf3-9e5f-9253458cd948)
+![Screenshot_20240712_160202](https://github.com/user-attachments/assets/ed74d111-219b-47fc-9b86-9aa86d48168c)
+![Screenshot_20240712_160134](https://github.com/user-attachments/assets/4cb33661-f5cc-4005-b243-0d264de7dfe4)
+![Screenshot_20240712_160114](https://github.com/user-attachments/assets/662a7852-7c22-4cb6-9c90-55f599d69e99)
