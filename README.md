@@ -1,6 +1,6 @@
 # what_the_price
 
-A stylish mobile application where you can find the menus and prices of the businesses and cafes you are looking for. Written with Flutter by Emirhan ÇOBAN.
+A stylish mobile application where you can find the menus and prices of the businesses and cafes you are looking for. Written with Flutter.
 
 ## Can I use the UI?
 
