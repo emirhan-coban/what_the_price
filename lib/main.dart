@@ -1,18 +1,10 @@
-// ignore_for_file: prefer_const_constructors
-
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:what_the_price/firebase_options.dart';
+import 'package:provider/provider.dart';
 import 'package:what_the_price/pages/home_page.dart';
-import 'package:what_the_price/pages/login_register.dart';
-import 'package:what_the_price/util/user.dart';
+import 'package:what_the_price/util/favorites_manager.dart';
 
-import 'pages/forgot_password.dart';
-void main() async {
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
   runApp(const MyApp());
 }
 
@@ -21,15 +13,21 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: UserPage(),
-      routes: {
-        '/user':(context) => const UserPage(),
-        '/login': (context) => const LoginRegister(),
-        '/home': (context) => const HomePage(),
-        '/forgot_password': (context) => const ForgotPassword(),
-      },
+    return ChangeNotifierProvider(
+      create: (_) => FavoritesManager(),
+      child: MaterialApp(
+        title: 'What The Price',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          useMaterial3: true,
+          fontFamily: 'SFPro',
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.grey,
+            brightness: Brightness.light,
+          ),
+        ),
+        home: const HomePage(),
+      ),
     );
   }
 }

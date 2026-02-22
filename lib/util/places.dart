@@ -4,6 +4,8 @@ class Places {
   final String imagePath;
   final String category;
   final String url;
+  final String description;
+  final double rating;
 
   Places({
     required this.name,
@@ -11,5 +13,7 @@ class Places {
     required this.imagePath,
     required this.category,
     required this.url,
+    this.description = '',
+    this.rating = 4.0,
   });
 }

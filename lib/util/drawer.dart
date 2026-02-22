@@ -1,141 +1,135 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:what_the_price/pages/about_page.dart';
+import 'package:what_the_price/pages/favorites_page.dart';
 
-class MyDrawer extends StatefulWidget {
+class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
 
   @override
-  State<MyDrawer> createState() => _MyDrawerState();
-}
-
-class _MyDrawerState extends State<MyDrawer> {
-  @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: Colors.grey[200],
+      backgroundColor: Colors.white,
+      surfaceTintColor: Colors.white,
       child: Column(
         children: [
+          // Gradient Header
           Container(
-            color: Colors.red,
             width: double.infinity,
-            height: 200,
-            padding: const EdgeInsets.all(20),
-            margin: const EdgeInsets.only(bottom: 20),
-            child: Image.asset(
-              "assets/images/price.png",
-              color: Colors.white,
-            ),
-          ),
-          ListTile(
-            leading: const Icon(
-              Icons.home,
-            ),
-            title: const Text(
-              'Ana Sayfa',
-              style: TextStyle(
-                fontFamily: "SFPro",
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
+            padding:
+                const EdgeInsets.only(top: 80, bottom: 40, left: 24, right: 24),
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Colors.redAccent, Color(0xFFFF5252)],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
               ),
             ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: Colors.white.withValues(alpha: 0.2),
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  child: const Icon(
+                    Icons.payments_outlined,
+                    color: Colors.white,
+                    size: 40,
+                  ),
+                ),
+                const SizedBox(height: 20),
+                const Text(
+                  'What The Price',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: -0.5,
+                  ),
+                ),
+                Text(
+                  'Mekan Rehberiniz',
+                  style: TextStyle(
+                    color: Colors.white.withValues(alpha: 0.8),
+                    fontSize: 14,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 20),
+          // Drawer Items
+          _buildDrawerItem(
+            icon: Icons.home_rounded,
+            title: 'Ana Sayfa',
+            onTap: () => Navigator.pop(context),
+            isSelected: true,
+          ),
+          _buildDrawerItem(
+            icon: Icons.favorite_rounded,
+            title: 'Favorilerim',
             onTap: () {
               Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            leading: const Icon(
-              Icons.settings,
-            ),
-            title: const Text(
-              'Ayarlar',
-              style: TextStyle(
-                fontFamily: "SFPro",
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            onTap: () {
-              // Handle settings onTap
-            },
-          ),
-          const Spacer(),
-          ListTile(
-            leading: const Icon(Icons.exit_to_app),
-            title: const Text(
-              'Çıkış Yap',
-              style: TextStyle(
-                fontFamily: "SFPro",
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            onTap: () {
-              showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                    actionsAlignment: MainAxisAlignment.spaceBetween,
-                    titlePadding: const EdgeInsets.only(left: 20, top: 10),
-                    content: const Text(
-                      'Çıkış yapmak istediğinize emin misiniz?',
-                      style: TextStyle(
-                        fontFamily: "SFPro",
-                        fontSize: 24,
-                      ),
-                    ),
-                    contentPadding: const EdgeInsets.only(
-                        left: 25, right: 25, top: 15, bottom: 10),
-                    actions: <Widget>[
-                      TextButton(
-                        style: TextButton.styleFrom(
-                          backgroundColor: Colors.red,
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 3),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                        ),
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                        child: const Text(
-                          'Hayır',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: "SFPro",
-                            fontSize: 24,
-                          ),
-                        ),
-                      ),
-                      TextButton(
-                        style: TextButton.styleFrom(
-                          backgroundColor: Colors.red,
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 3),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                        ),
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                          FirebaseAuth.instance.signOut();
-                        },
-                        child: const Text(
-                          'Evet',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: "SFPro",
-                            fontSize: 24,
-                          ),
-                        ),
-                      ),
-                    ],
-                  );
-                },
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const FavoritesPage()),
               );
             },
           ),
+          const Divider(indent: 24, endIndent: 24, height: 40),
+          _buildDrawerItem(
+            icon: Icons.info_outline_rounded,
+            title: 'Hakkımızda',
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const AboutPage()),
+              );
+            },
+          ),
+          const Spacer(),
+          Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: Text(
+              'Versiyon 1.0.0',
+              style: TextStyle(color: Colors.grey[400], fontSize: 12),
+            ),
+          ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildDrawerItem({
+    required IconData icon,
+    required String title,
+    required VoidCallback onTap,
+    bool isSelected = false,
+  }) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+      child: ListTile(
+        leading: Icon(
+          icon,
+          color: isSelected ? Colors.redAccent : Colors.grey[600],
+          size: 24,
+        ),
+        title: Text(
+          title,
+          style: TextStyle(
+            color: isSelected ? Colors.redAccent : Colors.black87,
+            fontSize: 16,
+            fontWeight: isSelected ? FontWeight.bold : FontWeight.w500,
+          ),
+        ),
+        onTap: onTap,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        tileColor: isSelected
+            ? Colors.redAccent.withValues(alpha: 0.05)
+            : Colors.transparent,
       ),
     );
   }
